@@ -1,8 +1,8 @@
 <?php
-namespace App\repo;
+namespace App\domain;
 use App\Models\Players_Summary;
-
-class PlayerSummary implements Summary{
+use App\repo\SummaryInterface;
+class PlayerSummary implements SummaryInterface{
 
   private $PlayerSummaryModel;
 

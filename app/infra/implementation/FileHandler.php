@@ -12,9 +12,15 @@ class FileHandler implements FileHandlerInterface
       $this->arrFileType = explode(',',$file_type);
     }
 
-    public  function upload()
+    public  function upload($objfile)
     {
-      return 'I am done';
+        if(!$this->validation($objfile->extension()))
+            return false;
+        $picName = $objfile->getClientOriginalName();
+        $destinationPath = '/var/www/html/ustech/public/img'; //Need to put this is in config file
+        $objfile->move($destinationPath, $picName);
+        return $picName ;
+
     }
 
     public function delete()
@@ -22,9 +28,11 @@ class FileHandler implements FileHandlerInterface
       return true;
     }
 
-    public function validation()
+    public function validation($extension)
     {
-      return true;
+
+       return in_array($extension, $this->arrFileType);
+
     }
 
     public function setuploadtype()

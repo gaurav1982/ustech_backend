@@ -17,6 +17,8 @@ interface PlayerInterface
     public function update($playerid, array $attributes);
 
     public function delete($playerid);
+
+    public function getPlayerHistory($playerid);
 }
 
 ?>

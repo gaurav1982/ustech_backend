@@ -30,6 +30,8 @@ $app->withFacades();
 
 $app->withEloquent();
 
+$app->configure('swagger-lume');
+$app->configure('auth');
 /*
 |--------------------------------------------------------------------------
 | Register Container Bindings
@@ -66,10 +68,14 @@ $app->singleton(
 //     App\Http\Middleware\ExampleMiddleware::class
 // ]);
 
-//  $app->routeMiddleware([
-//      'auth' => App\Http\Middleware\Authenticate::class,
-// ]);
+  $app->routeMiddleware([
+      'auth' => App\Http\Middleware\Authenticate::class,
+      'client' => \Laravel\Passport\Http\Middleware\CheckClientCredentials::class,
+ ]);
 
+$app->routeMiddleware([
+    'jsonx' => \danharper\LaravelJSONx\JSONxMiddleware::class,
+ ]);
 /*
 |--------------------------------------------------------------------------
 | Register Service Providers
@@ -85,6 +91,9 @@ $app->singleton(
  $app->register(App\Providers\AuthServiceProvider::class);
  $app->register(App\Providers\EventServiceProvider::class);
  $app->register(\Mpociot\ApiDoc\ApiDocGeneratorServiceProvider::class);
+ $app->register(\SwaggerLume\ServiceProvider::class);
+ $app->register(Laravel\Passport\PassportServiceProvider::class);
+ $app->register(Dusterio\LumenPassport\PassportServiceProvider::class);
 
  /*
 |--------------------------------------------------------------------------
