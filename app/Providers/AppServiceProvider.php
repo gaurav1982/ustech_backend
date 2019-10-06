@@ -29,6 +29,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->singleton(
+            Illuminate\Contracts\Debug\ExceptionHandler::class,
+            App\Exceptions\Handler::class
+        );
         $this->app->singleton(PlayerInterface::class,Player::class);
         $this->app->singleton(TeamInterface::class,Team::class);
         $this->app->singleton(FileHandlerInterface::class,ImageFileHandler::class);
