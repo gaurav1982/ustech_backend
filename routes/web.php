@@ -17,6 +17,7 @@ $router->get('/', function () use ($router) {
 
 $router->get('api/team[/{id}]', 'TeamController@getTeam');
 $router->post('api/team', 'TeamController@createTeam');
+$router->post('api/team/addPlayer', 'TeamController@addTeamPlayer');
 $router->put('api/team/{id}', 'TeamController@updateTeam');
 $router->delete('api/team/{id}', 'TeamController@deleteTeam');
 

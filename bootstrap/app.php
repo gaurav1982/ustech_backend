@@ -95,6 +95,7 @@ $app->routeMiddleware([
  $app->register(Laravel\Passport\PassportServiceProvider::class);
  $app->register(Dusterio\LumenPassport\PassportServiceProvider::class);
 
+\Dusterio\LumenPassport\LumenPassport::routes($app, ['prefix' => 'api/passport/oauth']);
  /*
 |--------------------------------------------------------------------------
 | Load The Application Routes

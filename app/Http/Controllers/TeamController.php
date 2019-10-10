@@ -41,6 +41,13 @@ class TeamController extends Controller
       return $this->team->update($team_id,$request->all());
     }
 
+    public function addTeamPlayer(Request $request)
+    {
+        $team_id = $request->get('team_id');
+        $player_id = $request->get('player_id');
+        return $this->team->addplayer($team_id,$player_id);
+    }
+
     public function deleteTeam($team_id)
     {
       return $this->team->delete($team_id);

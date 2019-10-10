@@ -36,7 +36,7 @@ class Player implements PlayerInterface
      */
     public  function create(array $attributes)
     {
-      return $this->PlayerModel->createPlayer($attributes) ;
+        return $this->PlayerModel->createPlayer($attributes) ;
     }
 
     /**

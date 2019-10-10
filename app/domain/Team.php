@@ -45,7 +45,8 @@ class Team implements TeamInterface{
 
   public function addplayer($team_id, $player_id)
   {
-    return true;
+    return $this->objPlayer->update($player_id,array('team_id'=>$team_id));
+
   }
 
 
